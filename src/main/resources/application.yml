@@ -1,3 +1,6 @@
 spring:
+  profiles:
+    action: dev
+    include: secret
   application:
     name: back
