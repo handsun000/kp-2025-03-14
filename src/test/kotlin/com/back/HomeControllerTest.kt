@@ -15,18 +15,21 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
 class HomeControllerTest {
-
 	@Autowired
 	private lateinit var mvc: MockMvc
 
 	@Test
 	@DisplayName("GET /buckets")
 	fun t1() {
-		mvc.perform(
-			get("/buckets")
-		)
+		val resultActions = mvc
+			.perform(
+				get("/buckets")
+			)
 			.andDo(print())
-			.andExpect(status().isOk)
-	}
 
+		resultActions
+			.andExpect {
+				status().isOk()
+			}
+	}
 }
